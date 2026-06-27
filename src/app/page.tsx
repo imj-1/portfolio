@@ -1,7 +1,15 @@
+import Hero from "@/components/Hero";
+import Projects from "@/components/Projects";
+import Experience from "@/components/Experience";
+import Contact from "@/components/Contact";
+
 export default function Home() {
     return (
-        <div>
-            <h1 className="text-4xl font-bold">Hello world!</h1>
-        </div>
+        <>
+            <Hero/>
+            <Projects/>
+            <Experience/>
+            <Contact/>
+        </>
     );
 }
