@@ -14,8 +14,23 @@ const roles: Role[] = [
 ];
 
 const skills = [
-    "TypeScript", "React", "Next.js", "Three.js",
-    "Node.js", "Go", "PostgreSQL", "AWS", "Docker",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Ruby on Rails",
+    "Node.js",
+    "GraphQL",
+    "PostgreSQL",
+    "JavaScript",
+    "Docker",
+    "DataDog",
+    "Mixpanel",
+    "Redis",
+    "Sentry",
+    "Jira",
+    "GitHub",
+    "Figma",
+    "SCSS",
 ];
 
 export default function Experience() {
