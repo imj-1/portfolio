@@ -42,9 +42,9 @@ export default function Projects() {
                 {projects.map((project) => (
                     <article
                         key={project.title}
-                        className="group bg-bg-card border border-border-subtle rounded-xl p-6
-              hover:border-border-hover hover:bg-[rgba(124,109,240,0.03)]
-              transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
+                        className="group flex flex-col bg-bg-card border border-border-subtle rounded-xl p-6
+    hover:border-border-hover hover:bg-[rgba(124,109,240,0.03)]
+    transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
                     >
                         {/* Icon */}
                         <div
@@ -61,7 +61,7 @@ export default function Projects() {
                         </p>
 
                         {/* Tags */}
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-2 mt-auto pt-3">
                             {project.tags.map((tag) => (
                                 <span
                                     key={tag}

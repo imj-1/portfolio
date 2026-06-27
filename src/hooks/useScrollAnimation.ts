@@ -34,6 +34,7 @@ export function useScrollAnimation<T extends HTMLElement>(
             delay,
             stagger: stagger || undefined,
             ease: "power3.out",
+            immediateRender: false,
             scrollTrigger: {
                 trigger: el,
                 start: "top 85%",   // animation starts when top of element hits 85% down the viewport
