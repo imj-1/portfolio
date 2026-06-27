@@ -14,14 +14,14 @@ const projects: Project[] = [
     {
         title: "Nexus Banking",
         description: "Nexus Banking is a banking platform built on a microservices architecture. The backend consists of independent Spring Boot services (api-gateway, user-service, account-service, transaction-service) communicating via REST and Kafka events, with Keycloak handling authentication, Redis for caching, and PostgreSQL for persistence.",
-        tags: ["React", "D3.js", "WebSocket"],
+        tags: ["Java", "Spring Boot", "Angular", "Spring Cloud", "Distributed Systems"],
         icon: "📊",
         color: "rgba(124, 109, 240, 0.1)",
     },
     {
         title: "Tankmates",
         description: "E-Commerce platform for aquatic animals.",
-        tags: ["TypeScript", "Node.js", "React"],
+        tags: ["TypeScript", "Node.js", "React", "Express", "PostgreSQL", "SCSS"],
         icon: "⌨️",
         color: "rgba(80, 200, 180, 0.1)",
     },
