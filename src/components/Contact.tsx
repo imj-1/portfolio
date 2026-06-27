@@ -12,7 +12,10 @@ export default function Contact() {
     const ref = useScrollAnimation<HTMLDivElement>({y: 20});
 
     return (
-        <section id="contact" className="max-w-5xl mx-auto px-8 py-24 text-center">
+        <section
+            id="contact"
+            className="min-h-screen flex items-center justify-center px-8 text-center"
+        >
             <div ref={ref}>
                 <p className="text-[11px] uppercase tracking-[0.15em] text-accent-purple/70 mb-4">
                     Get in touch
