@@ -26,7 +26,7 @@ const projects: Project[] = [
         tags: ["TypeScript", "Node.js", "React", "Express", "PostgreSQL", "SCSS"],
         icon: "⌨️",
         color: "rgba(80, 200, 180, 0.1)",
-        link: "http://tankmates.netlify.app/",
+        link: "https://tankmates.netlify.app/",
     },
 ];
 
@@ -44,12 +44,11 @@ export default function Projects() {
             <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {projects.map((project) => (
                     <a href={project.link || undefined} key={project.title} target="_blank"
-                       rel="noopener noreferrer">
+                       rel="noopener noreferrer" className="h-full">
                         <article
-                            key={project.title}
-                            className="group flex flex-col bg-bg-card border border-border-subtle rounded-xl p-6
-    hover:border-border-hover hover:bg-[rgba(124,109,240,0.03)]
-    transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
+                            className="group flex flex-col h-full bg-bg-card border border-border-subtle rounded-xl p-6
+            hover:border-border-hover hover:bg-[rgba(124,109,240,0.03)]
+            transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
                         >
                             {/* Icon */}
                             <div
