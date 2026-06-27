@@ -51,7 +51,7 @@ export default function Hero() {
                         View projects
                     </a>
                     <a
-                        href="/resume.pdf"
+                        href="/Isidro_Molina_2026_Resume.pdf"
                         className="px-6 py-3 border border-border-subtle text-text-secondary text-sm
               font-medium rounded-lg hover:border-border-hover hover:text-text-primary
               transition-all duration-300"
