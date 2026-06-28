@@ -71,8 +71,8 @@ const SKILL_CATALOG: Record<string, Skill> = {
 
 
 const DEFAULT_SKILLS = [
-    "typescript", "react", "nextjs", "threejs",
-    "nodejs", "rubyonrails", "postgresql", "aws", "docker",
+    "typescript", "react", "nextjs",
+    "nodejs", "rubyonrails", "postgresql", "docker", "graphql", "redis", "git", "figma",
 ];
 
 function AddSkillModal({
@@ -215,7 +215,7 @@ export default function Skills() {
                         <div
                             key={key}
                             className="relative group flex flex-col items-center justify-center gap-2
-                py-5 rounded-xl border border-border-subtle bg-bg-card
+                p-2 rounded-xl border border-border-subtle bg-bg-card
                 hover:border-border-hover transition-all duration-300 cursor-pointer"
                         >
                             {/* Remove button — top right, visible on hover */}
@@ -245,9 +245,8 @@ export default function Skills() {
                 {/* Add button */}
                 <button
                     onClick={() => setShowModal(true)}
-                    className="flex flex-col items-center justify-center gap-2
-            py-5 rounded-xl border border-dashed border-border-subtle
-            hover:border-border-hover hover:bg-[rgba(124,109,240,0.03)]
+                    className="flex flex-col items-center justify-center p-2 rounded-xl border border-dashed border-border-subtle
+hover:border-border-hover hover:bg-[rgba(124,109,240,0.03)]
             transition-all duration-300 cursor-pointer group"
                 >
           <span className="text-xl text-text-secondary group-hover:text-accent-purple transition-colors">
