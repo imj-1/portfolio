@@ -36,14 +36,11 @@ export default function Contact() {
             className="min-h-screen flex items-center justify-center px-8 text-center"
         >
             <div ref={ref}>
-                <p className="text-[11px] uppercase tracking-[0.15em] text-accent-purple/70 mb-4">
-                    Get in touch
-                </p>
                 <h2 className="text-2xl font-medium tracking-tight mb-3">
-                    Let&apos;s build something
+                    Let’s launch your next big project
                 </h2>
-                <p className="text-sm text-text-secondary mb-8">
-                    Currently open to full-time roles and interesting collaborations.
+                <p className="text-l font-bold uppercase tracking-[0.15em] text-accent-purple/70 mb-4">
+                    Get in touch!
                 </p>
                 <div className="flex justify-center gap-3">
                     <button

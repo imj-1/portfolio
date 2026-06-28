@@ -29,9 +29,6 @@ export default function Hero() {
 
             {/* Text overlay */}
             <div className="relative z-10 max-w-2xl px-8 text-center">
-                <p className="text-xs uppercase tracking-[0.2em] text-text-secondary mb-4">
-                    Hi, I&apos;m
-                </p>
                 <h1 className="text-5xl md:text-6xl font-medium tracking-tight mb-4">
                     Isidro Molina
                 </h1>
@@ -39,7 +36,9 @@ export default function Hero() {
                     <span className="gradient-text">Software engineer</span>
                 </p>
                 <p className="text-base text-text-secondary leading-relaxed max-w-md mx-auto mb-8">
-                    Building fast, accessible interfaces with modern web technologies.
+                    Dedicated to building fast, accessible, and future-proof web interfaces.
+                    I
+                    bridge the gap between powerful backend logic and beautiful, user-centric design.
                     Currently open to new opportunities.
                 </p>
                 <div className="flex gap-3 justify-center">
