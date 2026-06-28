@@ -47,8 +47,7 @@ export default function Projects() {
                        rel="noopener noreferrer" className="h-full">
                         <article
                             className="group flex flex-col h-full bg-bg-card border border-border-subtle rounded-xl p-6
-            hover:border-border-hover hover:bg-[rgba(124,109,240,0.03)]
-            transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
+            hover:border-border-hover transition-all duration-300 cursor-pointer hover:-translate-y-0.5"
                         >
                             {/* Icon */}
                             <div
@@ -69,8 +68,8 @@ export default function Projects() {
                                 {project.tags.map((tag) => (
                                     <span
                                         key={tag}
-                                        className="text-[10px] px-2 py-1 rounded bg-[rgba(255,255,255,0.05)]
-                    text-text-muted"
+                                        className="px-3 py-1.5 rounded-md text-[10px] text-text-secondary
+              border border-border-subtle bg-[rgba(255,255,255,0.02)]"
                                     >
                   {tag}
                 </span>

@@ -20,10 +20,10 @@ export default function Navbar() {
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between
-        px-8 py-4 transition-all duration-300
+        px-8 py-4 border-b transition-all duration-300
         ${scrolled
-                ? "bg-[rgba(10,10,15,0.92)] backdrop-blur-xl border-b border-border-subtle"
-                : "bg-transparent"
+                ? "bg-bg-nav backdrop-blur-xl border-border-subtle shadow-[0_1px_12px_rgba(0,0,0,0.4)]"
+                : "border-transparent"
             }`}
         >
             <a href="#" className="text-[15px] font-medium tracking-tight text-text-primary">
@@ -36,7 +36,7 @@ export default function Navbar() {
                         key={link.href}
                         href={link.href}
                         className="text-xs uppercase tracking-widest text-text-secondary
-              hover:text-text-primary transition-colors duration-300"
+              hover:text-text-primary transition-colors duration-200 font-bold"
                     >
                         {link.label}
                     </a>

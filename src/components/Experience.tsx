@@ -10,6 +10,7 @@ interface Role {
 }
 
 const roles: Role[] = [
+    {title: "Software Developer", company: "Freelance", period: "2025 - Present", color: "#7c6df0"},
     {title: "Software Developer I", company: "Spring Health", period: "2023 – 2025", color: "#7c6df0"},
 ];
 
@@ -49,13 +50,13 @@ export default function Experience() {
                 {roles.map((role) => (
                     <div key={role.company} className="flex gap-4 items-start">
                         <div
-                            className="w-2 h-2 rounded-full mt-[7px] shrink-0"
+                            className="w-2 h-2 rounded-full mt-1.75 shrink-0"
                             style={{background: role.color}}
                         />
                         <div>
                             <h3 className="text-[14px] font-medium">{role.title}</h3>
                             <p className="text-[13px] text-accent-purple/70">{role.company}</p>
-                            <p className="text-[11px] text-text-muted mt-0.5">{role.period}</p>
+                            <p className="text-[11px] text-text-secondary mt-0.5">{role.period}</p>
                         </div>
                     </div>
                 ))}

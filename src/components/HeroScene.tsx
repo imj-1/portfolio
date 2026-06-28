@@ -40,7 +40,7 @@ function FloatingShape() {
         <Float speed={1.5} rotationIntensity={0.4} floatIntensity={0.8}>
             <mesh ref={meshRef} geometry={geometry} scale={1}>
                 <MeshDistortMaterial
-                    color="#7c6df0"
+                    color="#58a6ff"
                     emissive="#3a2d8e"
                     emissiveIntensity={0.4}
                     roughness={0.3}
@@ -65,7 +65,7 @@ export default function HeroScene() {
                 {/* Lights */}
                 <ambientLight intensity={0.3}/>
                 <directionalLight position={[5, 5, 5]} intensity={0.8} color="#ffffff"/>
-                <pointLight position={[-3, -2, 4]} intensity={0.5} color="#50c8b4"/>
+                <pointLight position={[-3, -2, 4]} intensity={0.5} color="#3fb950"/>
 
                 {/* The shape */}
                 <FloatingShape/>

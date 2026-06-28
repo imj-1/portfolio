@@ -216,7 +216,7 @@ export default function Skills() {
                             key={key}
                             className="relative group flex flex-col items-center justify-center gap-2
                 py-5 rounded-xl border border-border-subtle bg-bg-card
-                hover:border-border-hover transition-all duration-300 cursor-default"
+                hover:border-border-hover transition-all duration-300 cursor-pointer"
                         >
                             {/* Remove button — top right, visible on hover */}
                             <button
@@ -235,7 +235,7 @@ export default function Skills() {
                                 className="text-text-muted transition-colors duration-300"
                             />
                             <span
-                                className="text-[11px] text-text-muted group-hover:text-text-secondary transition-colors">
+                                className="text-[11px]  group:text-text-secondary transition-colors">
                 {skill.name}
               </span>
                         </div>
@@ -250,10 +250,10 @@ export default function Skills() {
             hover:border-border-hover hover:bg-[rgba(124,109,240,0.03)]
             transition-all duration-300 cursor-pointer group"
                 >
-          <span className="text-xl text-text-muted group-hover:text-accent-purple transition-colors">
+          <span className="text-xl text-text-secondary group-hover:text-accent-purple transition-colors">
             +
           </span>
-                    <span className="text-[11px] text-text-muted group-hover:text-text-secondary transition-colors">
+                    <span className="text-[11px] text-text-secondary transition-colors">
             Add skill
           </span>
                 </button>
