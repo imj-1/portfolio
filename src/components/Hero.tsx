@@ -36,7 +36,7 @@ export default function Hero() {
                     <span className="gradient-text">Software engineer</span>
                 </p>
                 <p className="text-base text-text-secondary leading-relaxed max-w-md mx-auto mb-8">
-                    Dedicated to building fast, accessible, and future-proof web interfaces.
+                    Dedicated to building fast, accessible, and modern web interfaces.
                     I
                     bridge the gap between powerful backend logic and beautiful, user-centric design.
                     Currently open to new opportunities.
