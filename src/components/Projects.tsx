@@ -15,8 +15,8 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Nexus Banking",
-    description: "Nexus Banking is a banking platform built on a microservices architecture. The backend consists of independent Spring Boot services (api-gateway, user-service, account-service, transaction-service) communicating via REST and Kafka events, with Keycloak handling authentication, Redis for caching, and PostgreSQL for persistence.",
-    tags: ["Java", "Spring Boot", "Angular", "Spring Cloud", "Distributed Systems"],
+    description: "A banking platform built on a microservices architecture. The backend consists of independent Spring Boot services (api-gateway, user-service, account-service, transaction-service) communicating via REST and Kafka events, with Keycloak handling authentication, Redis for caching, and PostgreSQL for persistence.",
+    tags: ["Java", "Spring Boot", "Angular", "Spring Cloud", "Distributed Systems", "Oracle Cloud"],
     icon: "/nexus-logo.png",
     color: "rgba(124, 109, 240, 0.1)",
     link: "https://nexusbanking.netlify.app/",
