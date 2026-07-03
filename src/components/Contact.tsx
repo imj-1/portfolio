@@ -102,7 +102,7 @@ export default function Contact() {
 
           <div aria-live="polite" className="min-h-[1.25rem] text-sm">
             {status === "success" && (
-              <span className="text-accent-purple/80">Thanks — I’ll get back to you soon.</span>
+              <span className="text-accent-purple/80">Thanks for reaching out, I look forward to connecting soon!</span>
             )}
             {status === "error" && <span className="text-red-400/80">{error}</span>}
           </div>
