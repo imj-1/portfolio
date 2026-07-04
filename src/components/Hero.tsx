@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import {useEffect, useState} from "react";
 
 // Dynamic import with SSR disabled — Three.js can't render on the server
 const HeroScene = dynamic(() => import("./HeroScene"), {
@@ -11,6 +12,21 @@ const HeroScene = dynamic(() => import("./HeroScene"), {
 });
 
 export default function Hero() {
+  const [indicatorOpacity, setIndicatorOpacity] = useState(1);
+
+  useEffect(() => {
+    const fadeDistance = 300; // px of scroll over which the indicator fully fades
+
+    const handleScroll = () => {
+      const opacity = Math.max(0, 1 - window.scrollY / fadeDistance);
+      setIndicatorOpacity(opacity);
+    };
+
+    handleScroll(); // sync on mount in case the page loads already scrolled
+    window.addEventListener("scroll", handleScroll, {passive: true});
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background radial glow */}
@@ -36,8 +52,7 @@ export default function Hero() {
           <span className="gradient-text">Software Engineer</span>
         </p>
         <p className="text-base text-text-secondary leading-relaxed max-w-md mx-auto mb-8">
-          Dedicated to building fast, accessible, and modern web interfaces.
-          I
+          Dedicated to building fast, accessible, and modern web interfaces. I
           bridge the gap between powerful backend logic and beautiful, user-centric design.
           Currently open to new opportunities.
         </p>
@@ -45,20 +60,45 @@ export default function Hero() {
           <a
             href="#projects"
             className="px-6 py-3 bg-accent-purple text-white text-sm font-medium
-              rounded-lg hover:bg-[#6a5bd8] transition-colors duration-300"
+          rounded-lg hover:bg-[#6a5bd8] transition-colors duration-300"
           >
             View projects
           </a>
           <a
             href="/Isidro_Molina_2026_Resume.pdf"
             className="px-6 py-3 border border-border-subtle text-text-secondary text-sm
-              font-medium rounded-lg hover:border-border-hover hover:text-text-primary
-              transition-all duration-300"
+        font-medium rounded-lg hover:border-border-hover hover:text-text-primary
+        transition-all duration-300"
           >
             Resume
           </a>
         </div>
       </div>
+
+      {/* Scroll indicator */}
+      <a
+        href="#projects"
+        aria-label="Scroll down"
+        aria-hidden={indicatorOpacity < 0.05}
+        className="absolute bottom-30 left-1/2 -translate-x-1/2 z-10
+  flex flex-col items-center gap-2 text-text-secondary
+  hover:text-text-primary transition-colors"
+        style={{
+          opacity: indicatorOpacity,
+          transition: "opacity 150ms ease-out, color 300ms",
+          pointerEvents: indicatorOpacity < 0.05 ? "none" : "auto",
+        }}
+      >
+        <span className="text-sm tracking-wide">Scroll</span>
+        <svg
+          className="animate-bounce"
+          width="30" height="30" viewBox="0 0 24 24"
+          fill="none" stroke="currentColor" strokeWidth="2"
+          strokeLinecap="round" strokeLinejoin="round"
+        >
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </a>
     </section>
   );
 }
