@@ -76,7 +76,7 @@ export default function Contact() {
     >
       <div ref={ref} className="w-full max-w-md">
         <h2 className="text-2xl font-medium tracking-tight mb-3">
-          Let’s launch your next big project! 🚀
+          Let’s launch your next project! 🚀
         </h2>
         <p className="text-l font-bold uppercase tracking-[0.15em] text-accent-purple/70 mb-6">
           Get in touch!
