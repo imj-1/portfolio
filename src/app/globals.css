@@ -20,6 +20,9 @@
 
     --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+
+    --color-accent-violet: #a371f7;
+    --color-accent-amber: #e3b341;
 }
 
 html {
@@ -49,6 +52,9 @@ html {
     --color-border-hover: #0969da;
 
     --shadow-nav: 0 1px 12px rgba(0, 0, 0, 0.08);
+
+    --color-accent-violet: #8250df;
+    --color-accent-amber: #9a6700;
 }
 
 /* Nav shadow token so the scrolled shadow adapts per theme */
