@@ -1,6 +1,6 @@
 "use client";
 
-import {useEffect, useRef, useState} from "react";
+import {useState} from "react";
 import {useScrollAnimation} from "@/hooks/useScrollAnimation";
 import {
   SiDocker,
@@ -82,131 +82,9 @@ const DEFAULT_SKILLS = [
   "figma"
 ];
 
-function AddSkillModal({
-                         activeKeys,
-                         onAdd,
-                         onClose,
-                       }: {
-  activeKeys: string[];
-  onAdd: (key: string) => void;
-  onClose: () => void;
-}) {
-  const [search, setSearch] = useState("");
-  const modalRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-        onClose();
-      }
-    }
-
-    document.addEventListener("mousedown", handleClick);
-    return () => document.removeEventListener("mousedown", handleClick);
-  }, [onClose]);
-
-  useEffect(() => {
-    function handleKey(e: KeyboardEvent) {
-      if (e.key === "Escape") onClose();
-    }
-
-    document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
-  }, [onClose]);
-
-  const available = Object.entries(SKILL_CATALOG)
-    .filter(([key]) => !activeKeys.includes(key))
-    .filter(([, skill]) =>
-              skill.name.toLowerCase().includes(search.toLowerCase())
-    );
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
-      <div
-        ref={modalRef}
-        className="w-full max-w-sm bg-[#12121a] border border-border-subtle
-          rounded-xl p-5 shadow-2xl"
-      >
-        <div className="flex items-center justify-between mb-4">
-          <h3 className="text-sm font-medium">Add a skill</h3>
-          <button
-            onClick={onClose}
-            className="text-text-muted hover:text-text-primary transition-colors text-lg leading-none"
-          >
-            ×
-          </button>
-        </div>
-
-        <input
-          type="text"
-          placeholder="Search technologies..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          autoFocus
-          className="w-full px-3 py-2 rounded-lg bg-[rgba(255,255,255,0.05)]
-            border border-border-subtle text-sm text-text-primary
-            placeholder:text-text-muted outline-none
-            focus:border-border-hover transition-colors mb-3"
-        />
-
-        <div className="max-h-56 overflow-y-auto flex flex-col gap-1">
-          {available.length === 0 ? (
-            <p className="text-xs text-text-muted text-center py-4">
-              {search ? "No matching skills found" : "All skills added!"}
-            </p>
-          ) : (
-             available.map(([key, skill]) => {
-               const Icon = skill.icon;
-               return (
-                 <button
-                   key={key}
-                   onClick={() => {
-                     onAdd(key);
-                     onClose();
-                   }}
-                   className="flex items-center gap-3 px-3 py-2 rounded-lg text-left
-            hover:bg-[rgba(255,255,255,0.05)] transition-colors group"
-                 >
-                   {typeof Icon === "string" ? (
-                     <Image
-                       src={Icon}
-                       alt={skill.name}
-                       width={24}
-                       height={24}
-                       className="object-contain"
-                     />
-                   ) : (
-                      <Icon
-                        size={24}
-                        style={{color: skill.color}}
-                        className="transition-colors duration-300"
-                      />
-                    )}
-                   <span className="text-sm text-text-secondary group-hover:text-text-primary transition-colors">
-                {skill.name}
-            </span>
-                 </button>
-               );
-             })
-           )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function Skills() {
   const [activeKeys, setActiveKeys] = useState<string[]>(DEFAULT_SKILLS);
-  const [showModal, setShowModal] = useState(false);
   const gridRef = useScrollAnimation<HTMLDivElement>({stagger: 0.06, y: 20});
-
-  function addSkill(key: string) {
-    setActiveKeys((prev) => [...prev, key]);
-  }
-
-  function removeSkill(key: string) {
-    setActiveKeys((prev) => prev.filter((k) => k !== key));
-  }
 
   return (
     <section id="skills" className="max-w-5xl mx-auto px-8 py-24">
@@ -233,16 +111,6 @@ export default function Skills() {
             p-2 rounded-xl border border-border-subtle bg-bg-card
             hover:border-border-hover transition-all duration-300 cursor-pointer"
             >
-              <button
-                onClick={() => removeSkill(key)}
-                className="absolute top-1.5 right-2 text-text-muted opacity-0
-                group-hover:opacity-100 hover:text-red-400
-                transition-all text-xs leading-none"
-                aria-label={`Remove ${skill.name}`}
-              >
-                ×
-              </button>
-
               {/* Check type BEFORE rendering */}
               {typeof iconAsset === "string" ? (
                 <Image
@@ -272,30 +140,7 @@ export default function Skills() {
             </div>
           );
         })}
-
-        {/* Add button */}
-        <button
-          onClick={() => setShowModal(true)}
-          className="flex flex-col items-center justify-center p-2 rounded-xl border border-dashed border-border-subtle
-hover:border-border-hover hover:bg-[rgba(124,109,240,0.03)]
-            transition-all duration-300 cursor-pointer group"
-        >
-          <span className="text-xl text-text-secondary group-hover:text-accent-purple transition-colors">
-            +
-          </span>
-          <span className="text-[11px] text-text-secondary transition-colors">
-            Add skill
-          </span>
-        </button>
       </div>
-
-      {showModal && (
-        <AddSkillModal
-          activeKeys={activeKeys}
-          onAdd={addSkill}
-          onClose={() => setShowModal(false)}
-        />
-      )}
     </section>
   );
 }
