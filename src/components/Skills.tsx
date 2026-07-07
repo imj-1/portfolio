@@ -33,12 +33,13 @@ interface Skill {
   name: string;
   icon: IconType | string;
   color: string;
+  colorLight?: string;
 }
 
 const SKILL_CATALOG: Record<string, Skill> = {
   typescript: {name: "TypeScript", icon: SiTypescript, color: "#3178c6"},
   react: {name: "React", icon: SiReact, color: "#61dafb"},
-  nextjs: {name: "Next.js", icon: SiNextdotjs, color: "#ffffff"},
+  nextjs: {name: "Next.js", icon: SiNextdotjs, color: "#ffffff", colorLight: "#000000"},
   nodejs: {name: "Node.js", icon: SiNodedotjs, color: "#5fa04e"},
   go: {name: "Go", icon: SiGo, color: "#00add8"},
   postgresql: {name: "PostgreSQL", icon: SiPostgresql, color: "#4169e1"},
@@ -58,7 +59,7 @@ const SKILL_CATALOG: Record<string, Skill> = {
   springboot: {name: "Spring Boot", icon: SiSpring, color: "#6db33f"},
   java: {name: "Java", icon: "/java-svgrepo-com.svg", color: "#007396"},
   snowflake: {name: "Snowflake", icon: SiSnowflake, color: "#249edc"},
-  express: {name: "Express", icon: SiExpress, color: "#ffffff"},
+  express: {name: "Express", icon: SiExpress, color: "#ffffff", colorLight: "#000000"},
   javascript: {name: "JavaScript", icon: SiJavascript, color: "#F0DB4F"},
 };
 
@@ -123,8 +124,8 @@ export default function Skills() {
                    return (
                      <IconComponent
                        size={24}
-                       style={{color: skill.color}}
-                       className="text-text-muted transition-colors duration-300"
+                       style={{color: `light-dark(${skill.colorLight ?? skill.color}, ${skill.color})`}}
+                       className="transition-colors duration-300"
                      />
                    );
                  })()
