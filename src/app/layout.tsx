@@ -2,11 +2,10 @@ import type {Metadata} from "next";
 import {Inter} from "next/font/google";
 import "./globals.css";
 import type {ReactNode} from "react";
-import Navbar from "@/components/Navbar"; // adjust to your actual path
+import Navbar from "@/components/Navbar";
+import {ThemeScript} from "@/app/ThemeScript";
 
 const inter = Inter({subsets: ["latin"], variable: "--font-sans"});
-
-const themeInit = `(function(){try{const t=localStorage.getItem("theme");document.documentElement.dataset.theme=t||(window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark")}catch{document.documentElement.dataset.theme="dark"}})();`;
 
 export const metadata: Metadata = {
   title: "Isidro Molina — Software Engineer Portfolio",
@@ -18,7 +17,7 @@ export default function RootLayout({children}: { children: ReactNode }) {
   return (
     <html lang="en" data-theme="dark" suppressHydrationWarning className={inter.variable}>
     <body>
-    <script dangerouslySetInnerHTML={{__html: themeInit}}/>
+    <ThemeScript/>
     <Navbar/>
     {children}
     </body>
