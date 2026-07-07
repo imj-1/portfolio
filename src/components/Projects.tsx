@@ -33,7 +33,7 @@ const projects: Project[] = [
 
 export default function Projects() {
   // The ref targets the grid container; stagger animates each card
-  const gridRef = useScrollAnimation<HTMLDivElement>({stagger: 0.12, y: 30});
+  const gridRef = useScrollAnimation<HTMLDivElement>({stagger: 0.3, y: 30, duration: 1.1});
 
   return (
     <section id="projects" className="max-w-5xl mx-auto px-8 py-24">

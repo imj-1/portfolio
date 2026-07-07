@@ -56,7 +56,12 @@ const roles: Role[] = [
 ];
 
 export default function Experience() {
-  const listRef = useScrollAnimation<HTMLDivElement>({stagger: 0.15, y: 20});
+  const listRef = useScrollAnimation<HTMLDivElement>({
+                                                       stagger: 0.03,
+                                                       y: 20,
+                                                       duration: 1.1,
+                                                       ease: "power1.out",
+                                                     });
 
   return (
     <section id="about" className="max-w-5xl mx-auto px-8 py-24">

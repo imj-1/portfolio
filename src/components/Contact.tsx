@@ -1,6 +1,6 @@
 "use client";
 
-import {useState} from "react";
+import {SubmitEvent, useState} from "react";
 import {useScrollAnimation} from "@/hooks/useScrollAnimation";
 
 const EMAIL = ["isidromolina.322", "gmail.com"].join("@");
@@ -13,7 +13,7 @@ const links = [
 type Status = "idle" | "submitting" | "success" | "error";
 
 export default function Contact() {
-  const ref = useScrollAnimation<HTMLDivElement>({y: 20});
+  const ref = useScrollAnimation<HTMLDivElement>({y: 20, duration: 1.1});
   const [copied, setCopied] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
@@ -28,7 +28,7 @@ export default function Contact() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     setStatus("submitting");
@@ -47,7 +47,11 @@ export default function Contact() {
                              }),
       });
       const data = await res.json();
-      if (!res.ok || !data.ok) throw new Error(data.error || "Something went wrong.");
+      if (!res.ok || !data.ok) {
+        setStatus("error");
+        setError(data.error || "Something went wrong.");
+        return;
+      }
       setStatus("success");
       form.reset();
     } catch (err) {
@@ -72,7 +76,7 @@ export default function Contact() {
     >
       <div ref={ref} className="w-full max-w-md">
         <h2 className="text-2xl font-medium tracking-tight mb-3">
-          Let’s launch your next big project
+          Let’s launch your next big project! 🚀
         </h2>
         <p className="text-l font-bold uppercase tracking-[0.15em] text-accent-purple/70 mb-6">
           Get in touch!
@@ -89,7 +93,7 @@ export default function Contact() {
 
           <input name="name" type="text" required placeholder="Your name" className={inputClass}/>
           <input name="email" type="email" required placeholder="Your email" className={inputClass}/>
-          <textarea name="message" required rows={4} placeholder="Your message"
+          <textarea name="message" required rows={4} placeholder="Your pitch/feature request"
                     className={inputClass + " resize-none"}/>
 
           <button
@@ -100,7 +104,7 @@ export default function Contact() {
             {status === "submitting" ? "Sending…" : "Send message"}
           </button>
 
-          <div aria-live="polite" className="min-h-[1.25rem] text-sm">
+          <div aria-live="polite" className="min-h-5 text-sm">
             {status === "success" && (
               <span className="text-accent-purple/80">Thanks for reaching out, I look forward to connecting soon!</span>
             )}

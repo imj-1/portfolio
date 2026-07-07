@@ -59,9 +59,8 @@ const SKILL_CATALOG: Record<string, Skill> = {
   java: {name: "Java", icon: "/java-svgrepo-com.svg", color: "#007396"},
   snowflake: {name: "Snowflake", icon: SiSnowflake, color: "#249edc"},
   express: {name: "Express", icon: SiExpress, color: "#ffffff"},
-  javascript: {name: "JavaScript", icon: SiJavascript, color: "#F0DB4F"}
+  javascript: {name: "JavaScript", icon: SiJavascript, color: "#F0DB4F"},
 };
-
 
 const DEFAULT_SKILLS = [
   "rubyonrails",
@@ -79,12 +78,12 @@ const DEFAULT_SKILLS = [
   "nextjs",
   "python",
   "git",
-  "figma"
+  "figma",
 ];
 
 export default function Skills() {
-  const [activeKeys, setActiveKeys] = useState<string[]>(DEFAULT_SKILLS);
-  const gridRef = useScrollAnimation<HTMLDivElement>({stagger: 0.06, y: 20});
+  const [activeKeys] = useState<string[]>(DEFAULT_SKILLS);
+  const gridRef = useScrollAnimation<HTMLDivElement>({stagger: 0.03, y: 20, duration: 0.4, ease: "power1.out",});
 
   return (
     <section id="skills" className="max-w-5xl mx-auto px-8 py-24">
@@ -101,17 +100,15 @@ export default function Skills() {
           const skill = SKILL_CATALOG[key];
           if (!skill) return null;
 
-          // Rename to asset to avoid treating a string like a React Component immediately
           const iconAsset = skill.icon;
 
           return (
             <div
               key={key}
               className="relative group flex flex-col items-center justify-center gap-2
-            p-2 rounded-xl border border-border-subtle bg-bg-card
-            hover:border-border-hover transition-all duration-300 cursor-pointer"
+                p-2 rounded-xl border border-border-subtle bg-bg-card
+                hover:border-border-hover transition-all duration-300 cursor-pointer"
             >
-              {/* Check type BEFORE rendering */}
               {typeof iconAsset === "string" ? (
                 <Image
                   src={iconAsset}
@@ -121,7 +118,6 @@ export default function Skills() {
                   className="object-contain h-6 w-6"
                 />
               ) : (
-                 /* Capitalize it here locally now that we know it's a valid component */
                  (() => {
                    const IconComponent = iconAsset;
                    return (
@@ -136,7 +132,7 @@ export default function Skills() {
 
               <span className="text-[11px] group-hover:text-text-secondary transition-colors">
                 {skill.name}
-            </span>
+              </span>
             </div>
           );
         })}
