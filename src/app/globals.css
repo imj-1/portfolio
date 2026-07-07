@@ -28,6 +28,39 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Light theme — GitHub Primer light palette to match your dark GitHub look */
+:root[data-theme="light"] {
+    color-scheme: light;
+
+    --color-bg-primary: #ffffff;
+    --color-bg-surface: #f6f8fa;
+    --color-bg-card: #f6f8fa;
+    --color-bg-card-hover: #eaeef2;
+    --color-bg-nav: #ffffff;
+
+    --color-text-primary: #1f2328;
+    --color-text-secondary: #656d76;
+    --color-text-muted: #8c959f;
+
+    --color-accent-purple: #0969da;
+    --color-accent-teal: #1a7f37;
+
+    --color-border-subtle: #d1d9e0;
+    --color-border-hover: #0969da;
+
+    --shadow-nav: 0 1px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Nav shadow token so the scrolled shadow adapts per theme */
+@theme {
+    --shadow-nav: 0 1px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Optional: your scrollbar thumb is white-on-white in light mode */
+:root[data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+}
+
 body {
     background: var(--color-bg-primary);
     color: var(--color-text-primary);
