@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import {useEffect, useState} from "react";
+import Image from "next/image";
 
 // Dynamic import with SSR disabled — Three.js can't render on the server
 const HeroScene = dynamic(() => import("./HeroScene"), {
@@ -45,6 +46,16 @@ export default function Hero() {
 
       {/* Text overlay */}
       <div className="relative z-10 max-w-2xl px-8 text-center">
+        <Image
+          src="/profile.jpg"
+          alt="Isidro Molina"
+          width={128}
+          height={128}
+          priority
+          unoptimized
+          className="size-75 rounded-full mx-auto mb-8 object-cover
+    border border-border-subtle"
+        />
         <h1 className="text-5xl md:text-6xl font-medium tracking-tight mb-4">
           Isidro Molina
         </h1>
