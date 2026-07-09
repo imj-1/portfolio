@@ -20,6 +20,7 @@
 
     --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+    --font-cursive: var(--font-dancing-script), cursive;
 
     --color-accent-violet: #a371f7;
     --color-accent-amber: #e3b341;
@@ -30,6 +31,7 @@ html {
     background: var(--color-bg-primary);
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
+    --font-dancing-script: cursive;
 }
 
 /* Light theme — GitHub Primer light palette to match your dark GitHub look */

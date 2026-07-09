@@ -57,7 +57,7 @@ export default function Hero() {
           className="size-36 md:size-65 rounded-full mx-auto mb-6 md:mb-8 object-cover
     border border-border-subtle"
         />
-        <h1 className="text-5xl md:text-6xl font-medium tracking-tight mb-2">
+        <h1 className="font-cursive text-6xl md:text-7xl tracking-tight mb-2 animate-write-in">
           Isidro Molina
         </h1>
         <p className="text-2xl md:text-3xl font-medium tracking-tight mb-6">
