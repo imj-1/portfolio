@@ -80,7 +80,7 @@ export default function Hero() {
         href="#projects"
         aria-label="Scroll down"
         aria-hidden={indicatorOpacity < 0.05}
-        className="absolute bottom-30 left-1/2 -translate-x-1/2 z-10
+        className="absolute bottom-10 md:bottom-30 left-1/2 -translate-x-1/2 z-10
   flex flex-col items-center gap-2 text-text-secondary
   hover:text-text-primary transition-colors"
         style={{
