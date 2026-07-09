@@ -30,7 +30,7 @@ export default function Hero() {
 
   return (
     <section
-      className="relative min-h-screen flex items-start md:items-center justify-center overflow-hidden pt-24 md:pt-0">
+      className="relative min-h-svh flex items-start md:items-center justify-center overflow-hidden pt-24 md:pt-0">
       {/* Background radial glow */}
       <div
         className="absolute inset-0 pointer-events-none"

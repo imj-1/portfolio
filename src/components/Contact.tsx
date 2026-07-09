@@ -65,14 +65,14 @@ export default function Contact() {
     "hover:border-border-hover hover:text-text-primary transition-all duration-300 cursor-pointer";
 
   const inputClass =
-    "w-full px-4 py-2.5 rounded-lg bg-transparent text-sm text-text-primary " +
+    "w-full px-4 py-2.5 rounded-lg bg-transparent text-sm sm:text-sm text-text-primary " +
     "placeholder:text-text-secondary/60 border border-border-subtle " +
     "focus:border-border-hover focus:outline-none transition-all duration-300";
 
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center justify-center px-8 text-center"
+      className="min-h-svh flex items-center justify-center px-8 text-center"
     >
       <div ref={ref} className="w-full max-w-md">
         <h2 className="text-2xl font-medium tracking-tight mb-3">
