@@ -29,6 +29,7 @@ html {
     color-scheme: dark;
     background: var(--color-bg-primary);
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
 }
 
 /* Light theme — GitHub Primer light palette to match your dark GitHub look */

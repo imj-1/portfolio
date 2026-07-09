@@ -29,7 +29,8 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      className="relative min-h-screen flex items-start md:items-center justify-center overflow-hidden pt-24 md:pt-0">
       {/* Background radial glow */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -49,20 +50,20 @@ export default function Hero() {
         <Image
           src="/profile.jpg"
           alt="Isidro Molina"
-          width={128}
-          height={128}
+          width={260}
+          height={260}
           priority
           unoptimized
-          className="size-75 rounded-full mx-auto mb-8 object-cover
+          className="size-36 md:size-65 rounded-full mx-auto mb-6 md:mb-8 object-cover
     border border-border-subtle"
         />
-        <h1 className="text-5xl md:text-6xl font-medium tracking-tight mb-4">
+        <h1 className="text-5xl md:text-6xl font-medium tracking-tight mb-2">
           Isidro Molina
         </h1>
         <p className="text-2xl md:text-3xl font-medium tracking-tight mb-6">
           <span className="gradient-text">Software Engineer</span>
         </p>
-        <p className="text-base text-text-secondary leading-relaxed max-w-md mx-auto mb-8">
+        <p className="text-base text-text-secondary leading-relaxed max-w-md mx-auto mb-6">
           Dedicated to building fast, accessible, and modern web interfaces. I
           bridge the gap between powerful backend logic and beautiful, user-centric design.
           Currently open to new opportunities.
