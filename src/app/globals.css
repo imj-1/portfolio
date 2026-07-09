@@ -24,6 +24,9 @@
 
     --color-accent-violet: #a371f7;
     --color-accent-amber: #e3b341;
+
+    /* Nav shadow token so the scrolled shadow adapts per theme */
+    --shadow-nav: 0 1px 12px rgba(0, 0, 0, 0.4);
 }
 
 html {
@@ -34,7 +37,7 @@ html {
     --font-dancing-script: cursive;
 }
 
-/* Light theme — GitHub Primer light palette to match your dark GitHub look */
+/* Light theme — GitHub Primer light palette */
 :root[data-theme="light"] {
     color-scheme: light;
 
@@ -58,16 +61,6 @@ html {
 
     --color-accent-violet: #8250df;
     --color-accent-amber: #9a6700;
-}
-
-/* Nav shadow token so the scrolled shadow adapts per theme */
-@theme {
-    --shadow-nav: 0 1px 12px rgba(0, 0, 0, 0.4);
-}
-
-/* Optional: your scrollbar thumb is white-on-white in light mode */
-:root[data-theme="light"] ::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.15);
 }
 
 body {
@@ -95,6 +88,10 @@ body {
 ::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 3px;
+}
+
+:root[data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
 }
 
 html, body {
