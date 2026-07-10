@@ -106,34 +106,40 @@ export default function Skills() {
           return (
             <div
               key={key}
-              className="relative group flex flex-col items-center justify-center gap-2
-                p-2 rounded-xl border border-border-subtle bg-bg-card
-                hover:border-border-hover transition-all duration-300 cursor-pointer"
+              className="relative group flex flex-col items-center justify-center gap-3
+    p-3 rounded-xl
+    transition-all duration-300 cursor-pointer
+    hover:-translate-y-1"
             >
-              {typeof iconAsset === "string" ? (
-                <Image
-                  src={iconAsset}
-                  alt={skill.name}
-                  width={24}
-                  height={24}
-                  className="object-contain h-6 w-6"
-                />
-              ) : (
-                 (() => {
-                   const IconComponent = iconAsset;
-                   return (
-                     <IconComponent
-                       size={24}
-                       style={{color: `light-dark(${skill.colorLight ?? skill.color}, ${skill.color})`}}
-                       className="transition-colors duration-300"
-                     />
-                   );
-                 })()
-               )}
+              <div className="flex items-center justify-center h-12 w-12">
+                {typeof iconAsset === "string" ? (
+                  <Image
+                    src={iconAsset}
+                    alt={skill.name}
+                    width={38}
+                    height={38}
+                    className="object-contain h-full w-full transition-transform duration-300
+          group-hover:scale-125"
+                  />
+                ) : (
+                   (() => {
+                     const IconComponent = iconAsset;
+                     return (
+                       <IconComponent
+                         size={38}
+                         style={{color: `light-dark(${skill.colorLight ?? skill.color}, ${skill.color})`}}
+                         className="transition-transform duration-300
+              group-hover:scale-125"
+                       />
+                     );
+                   })()
+                 )}
+              </div>
 
-              <span className="text-[11px] group-hover:text-text-secondary transition-colors">
-                {skill.name}
-              </span>
+              <span
+                className="text-[12px] text-text-secondary font-bold group-hover:text-text-primary transition-colors">
+    {skill.name}
+  </span>
             </div>
           );
         })}
