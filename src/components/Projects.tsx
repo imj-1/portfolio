@@ -15,8 +15,20 @@ interface Project {
 const projects: Project[] = [
   {
     title: "Nexus Banking",
-    description: "A banking platform built on a microservices architecture. The backend consists of independent Spring Boot services (api-gateway, user-service, account-service, transaction-service) communicating via REST and Kafka events, with Keycloak handling authentication, Redis for caching, and PostgreSQL for persistence.",
-    tags: ["Java", "Spring Boot", "Angular", "Spring Cloud", "Distributed Systems", "Oracle Cloud"],
+    description: "Architected and deployed a distributed, full-stack digital banking platform on Oracle Cloud Infrastructure (OCI) using a microservices architecture. Designed a secure single entry point via Spring Cloud Gateway to handle OAuth2/JWT via Keycloak, rate limiting, and Resilience4j circuit breaking, while managing correlation ID propagation and BFF aggregation. Managed service discovery with Netflix Eureka, utilized Redis for high-performance caching, and fully containerized PostgreSQL databases using Docker.",
+    tags: [
+      "Java",
+      "Spring Boot",
+      "Angular",
+      "Spring Cloud",
+      "Distributed Systems",
+      "Oracle Cloud Infrastructure",
+      "Rate limiting",
+      "API Gateway",
+      "Circuit Breaker",
+      "OAuth2 / Keycloak",
+      "PostgreSQL"
+    ],
     icon: "/nexus-logo.png",
     color: "rgba(124, 109, 240, 0.1)",
     link: "https://nexusbanking.netlify.app/",
