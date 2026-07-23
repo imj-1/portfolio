@@ -1,23 +1,30 @@
 "use client";
 
-import {useState} from "react";
 import {useScrollAnimation} from "@/hooks/useScrollAnimation";
 import {
+  SiAngular,
+  SiDatadog,
   SiDocker,
   SiExpress,
   SiFigma,
   SiFirebase,
   SiGit,
   SiGo,
+  SiGrafana,
   SiGraphql,
   SiJavascript,
+  SiJest,
   SiKubernetes,
+  SiMixpanel,
+  SiNestjs,
   SiNextdotjs,
   SiNodedotjs,
   SiPostgresql,
   SiReact,
   SiRedis,
+  SiRedux,
   SiRubyonrails,
+  SiSass,
   SiSnowflake,
   SiSpring,
   SiTailwindcss,
@@ -61,88 +68,128 @@ const SKILL_CATALOG: Record<string, Skill> = {
   snowflake: {name: "Snowflake", icon: SiSnowflake, color: "#249edc"},
   express: {name: "Express", icon: SiExpress, color: "#ffffff", colorLight: "#000000"},
   javascript: {name: "JavaScript", icon: SiJavascript, color: "#F0DB4F"},
+  redux: {name: "Redux", icon: SiRedux, color: "#764abc"},
+  springcloud: {name: "Spring Cloud", icon: SiSpring, color: "#6db33f"},
+  jest: {name: "Jest", icon: SiJest, color: "#c21325"},
+  datadog: {name: "Datadog", icon: SiDatadog, color: "#632ca6"},
+  mixpanel: {name: "Mixpanel", icon: SiMixpanel, color: "#7856ff"},
+  grafana: {name: "Grafana", icon: SiGrafana, color: "#f46800"},
+  angular: {name: "Angular", icon: SiAngular, color: "#dd0031"},
+  sass: {name: "Sass", icon: SiSass, color: "#cc6699"},
+  nestjs: {name: "NestJS", icon: SiNestjs, color: "#e0234e"},
 };
 
-const DEFAULT_SKILLS = [
-  "rubyonrails",
-  "springboot",
-  "express",
-  "docker",
-  "graphql",
-  "postgresql",
-  "redis",
-  "nodejs",
-  "typescript",
-  "javascript",
-  "java",
-  "react",
-  "nextjs",
-  "python",
-  "git",
-  "figma",
+interface SkillGroup {
+  label: string;
+  keys: string[];
+}
+
+const SKILL_GROUPS: SkillGroup[] = [
+  {
+    label: "Frontend",
+    keys: ["typescript", "javascript", "nextjs", "react", "angular", "redux", "sass"],
+  },
+  {
+    label: "Backend",
+    keys: [
+      "java",
+      "python",
+      "nodejs",
+      "springboot",
+      "rubyonrails",
+      "express",
+      "nestjs",
+      "graphql",
+      "postgresql",
+      "redis",
+    ],
+  },
+  {
+    label: "Tools & Infrastructure",
+    keys: ["docker", "jest", "git", "figma", "datadog", "mixpanel", "grafana", "prometheus"],
+  },
 ];
 
-export default function Skills() {
-  const [activeKeys] = useState<string[]>(DEFAULT_SKILLS);
-  const gridRef = useScrollAnimation<HTMLDivElement>({stagger: 0.03, y: 20, duration: 0.4, ease: "power1.out",});
+function SkillCard({skill}: { skill: Skill }) {
+  const iconAsset = skill.icon;
 
   return (
-    <section id="skills" className="max-w-5xl mx-auto px-8 py-24">
+    <div
+      className="relative group flex flex-col items-center justify-center gap-1
+        p-2 rounded-xl
+        transition-all duration-300 cursor-pointer
+        hover:-translate-y-1"
+    >
+      <div className="flex items-center justify-center h-12 w-12">
+        {typeof iconAsset === "string" ? (
+          <Image
+            src={iconAsset}
+            alt={skill.name}
+            width={38}
+            height={38}
+            className="object-contain h-full w-full transition-transform duration-300
+              group-hover:scale-125"
+          />
+        ) : (
+           (() => {
+             const IconComponent = iconAsset;
+             return (
+               <IconComponent
+                 size={38}
+                 style={{color: `light-dark(${skill.colorLight ?? skill.color}, ${skill.color})`}}
+                 className="transition-transform duration-300 group-hover:scale-125"
+               />
+             );
+           })()
+         )}
+      </div>
+
+      <span className="text-[12px] text-text-secondary font-bold group-hover:text-text-primary transition-colors">
+        {skill.name}
+      </span>
+    </div>
+  );
+}
+
+function SkillCategory({group}: { group: SkillGroup }) {
+  const gridRef = useScrollAnimation<HTMLDivElement>({
+                                                       stagger: 0.03,
+                                                       y: 20,
+                                                       duration: 0.4,
+                                                       ease: "power1.out",
+                                                     });
+
+  return (
+    <div>
+      <h3 className="text-[11px] uppercase tracking-[0.15em] text-text-secondary mb-4">
+        {group.label}
+      </h3>
+      <div
+        ref={gridRef}
+        className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-10 gap-2"
+      >
+        {group.keys.map((key) => {
+          const skill = SKILL_CATALOG[key];
+          if (!skill) return null;
+          return <SkillCard key={key} skill={skill}/>;
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default function Skills() {
+  return (
+    <section id="skills" className="max-w-5xl mx-auto">
       <p className="text-[11px] uppercase tracking-[0.15em] text-accent-purple/70 mb-4">
         Technologies
       </p>
-      <h2 className="text-2xl font-medium tracking-tight mb-10">Skills</h2>
+      <h2 className="text-2xl font-medium tracking-tight mb-8">Skills</h2>
 
-      <div
-        ref={gridRef}
-        className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3"
-      >
-        {activeKeys.map((key) => {
-          const skill = SKILL_CATALOG[key];
-          if (!skill) return null;
-
-          const iconAsset = skill.icon;
-
-          return (
-            <div
-              key={key}
-              className="relative group flex flex-col items-center justify-center gap-3
-    p-3 rounded-xl
-    transition-all duration-300 cursor-pointer
-    hover:-translate-y-1"
-            >
-              <div className="flex items-center justify-center h-12 w-12">
-                {typeof iconAsset === "string" ? (
-                  <Image
-                    src={iconAsset}
-                    alt={skill.name}
-                    width={38}
-                    height={38}
-                    className="object-contain h-full w-full transition-transform duration-300
-          group-hover:scale-125"
-                  />
-                ) : (
-                   (() => {
-                     const IconComponent = iconAsset;
-                     return (
-                       <IconComponent
-                         size={38}
-                         style={{color: `light-dark(${skill.colorLight ?? skill.color}, ${skill.color})`}}
-                         className="transition-transform duration-300
-              group-hover:scale-125"
-                       />
-                     );
-                   })()
-                 )}
-              </div>
-
-              <span
-                className="text-[12px] text-text-secondary font-bold group-hover:text-text-primary transition-colors">
-    {skill.name}
-  </span>
-            </div>
-          );
-        })}
+      <div className="space-y-8">
+        {SKILL_GROUPS.map((group) => (
+          <SkillCategory key={group.label} group={group}/>
+        ))}
       </div>
     </section>
   );
