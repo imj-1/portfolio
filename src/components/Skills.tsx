@@ -170,7 +170,7 @@ function SkillCategory({group}: { group: SkillGroup }) {
       </h3>
       <div
         ref={gridRef}
-        className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-10 gap-2"
+        className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-8 gap-2"
       >
         {group.keys.map((key) => {
           const skill = SKILL_CATALOG[key];
@@ -184,7 +184,7 @@ function SkillCategory({group}: { group: SkillGroup }) {
 
 export default function Skills() {
   return (
-    <section id="skills" className="max-w-5xl mx-auto">
+    <section id="skills" className="max-w-5xl mx-auto px-8 py-16">
       <p className="text-[11px] uppercase tracking-[0.15em] text-accent-purple/70 mb-4">
         Technologies
       </p>
