@@ -20,11 +20,13 @@ import {
   SiNextdotjs,
   SiNodedotjs,
   SiPostgresql,
+  SiPrometheus,
   SiReact,
   SiRedis,
   SiRedux,
   SiRubyonrails,
   SiSass,
+  SiSentry,
   SiSnowflake,
   SiSpring,
   SiTailwindcss,
@@ -77,6 +79,8 @@ const SKILL_CATALOG: Record<string, Skill> = {
   angular: {name: "Angular", icon: SiAngular, color: "#dd0031"},
   sass: {name: "Sass", icon: SiSass, color: "#cc6699"},
   nestjs: {name: "NestJS", icon: SiNestjs, color: "#e0234e"},
+  prometheus: {name: "Prometheus", icon: SiPrometheus, color: "#e6522c"},
+  sentry: {name: "Sentry", icon: SiSentry, color: "#9e86ff", colorLight: "#7c66c4"}
 };
 
 interface SkillGroup {
@@ -106,7 +110,7 @@ const SKILL_GROUPS: SkillGroup[] = [
   },
   {
     label: "Tools & Infrastructure",
-    keys: ["docker", "jest", "git", "figma", "datadog", "mixpanel", "grafana", "prometheus"],
+    keys: ["docker", "jest", "git", "figma", "datadog", "mixpanel", "sentry", "grafana", "prometheus"],
   },
 ];
 
