@@ -2,15 +2,46 @@
 
 import {SubmitEvent, useState} from "react";
 import {useScrollAnimation} from "@/hooks/useScrollAnimation";
+import {FaGithub, FaLinkedin} from "react-icons/fa";
+import {FiCalendar, FiCheck} from "react-icons/fi";
 
 const EMAIL = ["isidromolina.322", "gmail.com"].join("@");
+const BOOKING_URL = "https://calendar.app.google/BSUs1LRSPyW5Aqc88";
 
 const links = [
-  {label: "GitHub", href: "https://github.com/imj-1", icon: "🐙"},
-  {label: "LinkedIn", href: "https://www.linkedin.com/in/isidromolina/", icon: "💼"},
+  {
+    label: "Book Meeting",
+    href: BOOKING_URL,
+    icon: FiCalendar,
+    color: "light-dark(#181717, #ffffff)",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/imj-1",
+    icon: FaGithub,
+    color: "light-dark(#181717, #ffffff)",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/isidromolina/",
+    icon: FaLinkedin,
+    color: "#0a66c2",
+  },
 ];
 
 type Status = "idle" | "submitting" | "success" | "error";
+
+function GmailIcon({size = 24}: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="52 42 88 66" aria-hidden="true">
+      <path fill="#4285f4" d="M58 108h14V74L52 59v43c0 3.32 2.69 6 6 6"/>
+      <path fill="#34a853" d="M120 108h14c3.32 0 6-2.69 6-6V59l-20 15"/>
+      <path fill="#fbbc04" d="M120 48v26l20-15v-8c0-7.42-8.47-11.65-14.4-7.2"/>
+      <path fill="#ea4335" d="M72 74V48l24 18 24-18v26L96 92"/>
+      <path fill="#c5221f" d="M52 51v8l20 15V48l-5.6-4.2c-5.94-4.45-14.4-.22-14.4 7.2"/>
+    </svg>
+  );
+}
 
 export default function Contact() {
   const ref = useScrollAnimation<HTMLDivElement>({y: 20, duration: 1.1});
@@ -60,9 +91,10 @@ export default function Contact() {
     }
   };
 
-  const itemClass =
-    "px-5 py-2.5 rounded-lg text-sm text-text-secondary border border-border-subtle " +
-    "hover:border-border-hover hover:text-text-primary transition-all duration-300 cursor-pointer";
+  const circleClass =
+    "flex items-center justify-center h-12 w-12 rounded-full " +
+    "border border-border-subtle hover:border-border-hover " +
+    "transition-all duration-300 cursor-pointer hover:-translate-y-0.5";
 
   const inputClass =
     "w-full px-4 py-2.5 rounded-lg bg-transparent text-sm sm:text-sm text-text-primary " +
@@ -112,17 +144,43 @@ export default function Contact() {
           </div>
         </form>
 
+        <div className="flex items-center gap-3 my-4" aria-hidden="true">
+          <div className="h-px flex-1 bg-border-subtle"/>
+          <span className="text-[11px] uppercase tracking-[0.15em] text-text-secondary">or</span>
+          <div className="h-px flex-1 bg-border-subtle"/>
+        </div>
+
         <div className="flex justify-center gap-3 mt-4">
-          <button type="button" onClick={copyEmail} aria-label={`Copy email address ${EMAIL}`} className={itemClass}>
-            <span className="mr-1.5">✉️</span>
-            {copied ? "Copied!" : "Copy email"}
+          <button
+            type="button"
+            onClick={copyEmail}
+            aria-label={copied ? "Email copied" : `Copy email address ${EMAIL}`}
+            title={copied ? "Copied!" : "Copy email"}
+            className={circleClass}
+          >
+            {copied ? (
+              <FiCheck size={24} style={{color: "var(--color-accent-teal)"}}/>
+            ) : (
+               <GmailIcon size={24}/>
+             )}
           </button>
-          {links.map((link) => (
-            <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className={itemClass}>
-              <span className="mr-1.5">{link.icon}</span>
-              {link.label}
-            </a>
-          ))}
+
+          {links.map((link) => {
+            const Icon = link.icon;
+            return (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+                title={link.label}
+                className={circleClass}
+              >
+                <Icon size={24} style={{color: link.color}}/>
+              </a>
+            );
+          })}
         </div>
       </div>
     </section>
